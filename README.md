@@ -1,43 +1,61 @@
-Neo-Pixel illuminated Christmas-Tree
-====================================
+Adventskranz mit Baumornament
+=============================
 
-This project collects various artifacts around my illuminated christmas tree
-project.
+***Achtung: die Inhalte sind aktuell nur rudimentär vorhanden***
 
-![](tree.jpg)
+In diesem Projekt geht es um einen Adventskranz aus dem 3D-Drucker.
+Statt Kerzen kommen Baum-Ornamente zum Einsatz.
+
+![](kranz.jpg)
 
 
-3D-Model
---------
+3D-Modelle
+----------
 
-The model of the tree (`3D/Ornament.stl`) is from
-<https://www.thingiverse.com/thing:2705104> with an additional hole in
-the bottom. It is printed in vase-mode with clear PET.
+Das Modell des Baums (`3D/Ornament.stl`) ist von
+<https://www.thingiverse.com/thing:2705104>. Mein Remix
+(`3D/Ornament-mit-Basis-und-Loch.stl`) fügt einen
+kleinen Stamm hinzu sowie ein Loch im Boden. Das dazugehörige
+OpenScad-Programm gibt es auch im Verzeichnis `3D`.
+
+Gedruckt ist das Ornament im Vasenmodus mit naturfarbenem PET. Die
+Druckdauer beträgt ca. 2 Stunden (0.2mm Schichtdicke).
+
+Der Kranz ist mit OpenScad entworfen und benötigt 6 Stunden Druckzeit.
 
 
 Hardware-Setup
 --------------
 
-This projects uses 8mm diffused neopixels from Adafruit, see
-<https://www.adafruit.com/product/1734>. Every pixel needs an additional
-100nF capacitor and the first pixel in a row should have a 300 Ohm resistor
-in line with data-in.
+Das Projekt verwendet diffuse 8mm Neopixels von Adafruit, siehe
+<https://www.adafruit.com/product/1734>. 
 
-You need a microcontroller driving the neopixel. If you use only a single
-pixel or only a few, you can get away with powering from 3V3 and using
-3V3 data-lines. Otherwise, you should power from 5V and use level-shifters
-if your mcu is a 3V3 device. All the details are in the
-<https://learn.adafruit.com/adafruit-neopixel-uberguide>.
+Jedes Pixel benötigt einen 100nF-Kondensator, das erste Pixel
+zusätzlich noch einen 300 Ohm Widerstand in der Datenleitung.
 
-
-PCB
----
-
-A simple pcb for a single 8mm pixel with connectors for chaining.
+Neopixel benötigen normalerweise 5V (Versorgungsspannung und auf
+der Datenleitung). Bei vier Pixel funktioniert es aber i.a.R. auch
+mit 3V3. Alle Details zu Neopixel gibt es in dem umfassenden
+Handbuch von Adafruit
+(<https://learn.adafruit.com/adafruit-neopixel-uberguide>).
 
 
-Python-Source
--------------
+Platine
+-------
 
-The python-source uses CircuitPython to drive one or more pixels.
+Im Verzeichnis `pcb` gibt es die KiCAD-Quellen für eine passende
+Platine. Die Dimensionen der Platine sind exakt auf den Kranz
+abgestimmt.
 
+
+Python-Quellen
+--------------
+
+Im Verzeichnis `src_python` gibt ein CircuitPython-Programm für
+die Steuerung.
+
+
+Attiny85-Quellen
+----------------
+
+Im Verzeichnis `src_attiny85` gibt es den Quellcode als C-Programm.
