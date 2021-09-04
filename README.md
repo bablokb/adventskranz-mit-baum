@@ -14,7 +14,7 @@ Statt Kerzen kommen Baum-Ornamente zum Einsatz.
 
 Das Modell des Baums (`3D/Ornament.stl`) ist von
 <https://www.thingiverse.com/thing:2705104>. Mein Remix
-(`3D/Ornament-mit-Basis.stl`) fügt einen
+(`3D/Ornament-mit-Basis.stl`, in Zip-Datei) fügt einen
 kleinen Stamm hinzu sowie ein Loch im Boden. Das dazugehörige
 OpenScad-Programm gibt es auch im Verzeichnis `3D`.
 
