@@ -1,0 +1,192 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Neopixel 8mm THT Support PCB"
+Date "2021-08-14"
+Rev "1.00"
+Comp "Bernhard Bablok"
+Comment1 "https://github.com/bablokb/christmas-tree"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Conn_01x04_Male J2
+U 1 1 610F7494
+P 6200 3800
+F 0 "J2" H 6172 3682 50  0000 R CNN
+F 1 "Conn_Next" H 6172 3773 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 6200 3800 50  0001 C CNN
+F 3 "~" H 6200 3800 50  0001 C CNN
+	1    6200 3800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 610F7E6D
+P 5000 3750
+F 0 "C1" H 4850 3650 50  0000 L CNN
+F 1 "100nF" H 4850 3550 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5038 3600 50  0001 C CNN
+F 3 "~" H 5000 3750 50  0001 C CNN
+F 4 "C49678" H 5000 3750 50  0001 C CNN "LCSC"
+	1    5000 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 610F8438
+P 4400 3600
+F 0 "R1" V 4193 3600 50  0000 C CNN
+F 1 "300Ω" V 4284 3600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4330 3600 50  0001 C CNN
+F 3 "~" H 4400 3600 50  0001 C CNN
+F 4 "C17617" H 4400 3600 50  0001 C CNN "LCSC"
+	1    4400 3600
+	0    1    1    0   
+$EndComp
+$Comp
+L LED:NeoPixel_THT D1
+U 1 1 610F8A5E
+P 5450 3750
+F 0 "D1" H 5400 4450 50  0000 L CNN
+F 1 "NeoPixel_THT" H 5200 4350 50  0000 L CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Wide_Pins" H 5500 3450 50  0001 L TNN
+F 3 "https://www.adafruit.com/product/1938" H 5550 3375 50  0001 L TNN
+	1    5450 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 3300 5450 3450
+Wire Wire Line
+	4200 3900 4200 4200
+Wire Wire Line
+	4200 4200 5750 4200
+Wire Wire Line
+	4200 3700 4600 3700
+Wire Wire Line
+	4200 3800 4600 3800
+Wire Wire Line
+	4600 3800 4600 4050
+Wire Wire Line
+	4600 4050 5000 4050
+Wire Wire Line
+	4600 3300 5000 3300
+Wire Wire Line
+	5000 3900 5000 4050
+Connection ~ 5000 4050
+Wire Wire Line
+	5000 4050 5450 4050
+Wire Wire Line
+	4200 3600 4250 3600
+Wire Wire Line
+	5000 3600 5000 3300
+Connection ~ 5000 3300
+Wire Wire Line
+	5000 3300 5450 3300
+Wire Wire Line
+	5150 3600 5150 3750
+Wire Wire Line
+	4550 3600 5150 3600
+Wire Wire Line
+	4600 3300 4600 3700
+$Comp
+L Connector:Conn_01x04_Male J1
+U 1 1 610F6FAC
+P 4000 3800
+F 0 "J1" H 3800 3650 50  0000 C CNN
+F 1 "Conn_First" H 3750 3800 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 4000 3800 50  0001 C CNN
+F 3 "~" H 4000 3800 50  0001 C CNN
+	1    4000 3800
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	5750 3750 5750 4200
+Wire Wire Line
+	6000 3800 5900 3800
+Wire Wire Line
+	5900 3800 5900 4050
+Wire Wire Line
+	5900 4050 5450 4050
+Connection ~ 5450 4050
+Wire Wire Line
+	6000 3900 6000 4200
+Wire Wire Line
+	6000 4200 5750 4200
+Connection ~ 5750 4200
+Wire Wire Line
+	6000 3700 5800 3700
+Wire Wire Line
+	5800 3700 5800 3300
+Wire Wire Line
+	5800 3300 5450 3300
+Connection ~ 5450 3300
+Wire Wire Line
+	6000 3600 6000 3450
+Wire Wire Line
+	5150 3450 5150 3600
+Connection ~ 5150 3600
+Wire Wire Line
+	5150 3450 6000 3450
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 61108469
+P 6050 3300
+F 0 "#FLG0101" H 6050 3375 50  0001 C CNN
+F 1 "PWR_FLAG" H 6050 3473 50  0000 C CNN
+F 2 "" H 6050 3300 50  0001 C CNN
+F 3 "~" H 6050 3300 50  0001 C CNN
+	1    6050 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6050 3300 5800 3300
+Connection ~ 5800 3300
+$Comp
+L power:GND #PWR0101
+U 1 1 61109AE3
+P 5450 4550
+F 0 "#PWR0101" H 5450 4300 50  0001 C CNN
+F 1 "GND" H 5455 4377 50  0000 C CNN
+F 2 "" H 5450 4550 50  0001 C CNN
+F 3 "" H 5450 4550 50  0001 C CNN
+	1    5450 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDD #PWR0102
+U 1 1 6110AA9C
+P 6250 3300
+F 0 "#PWR0102" H 6250 3150 50  0001 C CNN
+F 1 "VDD" V 6265 3428 50  0000 L CNN
+F 2 "" H 6250 3300 50  0001 C CNN
+F 3 "" H 6250 3300 50  0001 C CNN
+	1    6250 3300
+	0    1    1    0   
+$EndComp
+Connection ~ 6050 3300
+Wire Wire Line
+	6050 3300 6250 3300
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 6110BACB
+P 5600 4400
+F 0 "#FLG0102" H 5600 4475 50  0001 C CNN
+F 1 "PWR_FLAG" V 5600 4528 50  0000 L CNN
+F 2 "" H 5600 4400 50  0001 C CNN
+F 3 "~" H 5600 4400 50  0001 C CNN
+	1    5600 4400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5450 4050 5450 4400
+Wire Wire Line
+	5600 4400 5450 4400
+Connection ~ 5450 4400
+Wire Wire Line
+	5450 4400 5450 4550
+$EndSCHEMATC

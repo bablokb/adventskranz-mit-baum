@@ -1,0 +1,6 @@
+Comment,Designator,Footprint,LCSC
+"100nF","C1","Capacitor_SMD:C_0805_2012Metric","C49678"
+"NeoPixel_THT","D1","LED_THT:LED_D5.0mm-4_RGB_Wide_Pins",""
+"Conn_First","J1","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",""
+"Conn_Next","J2","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",""
+"300Ω","R1","Resistor_SMD:R_0805_2012Metric","C17617"

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/bablokb/git/christmas-tree/pcb/neopixel_8mm/neopixel_8mm.sch</source>
+    <date>Sa 14 Aug 2021 15:04:50 CEST</date>
+    <tool>Eeschema 5.1.8-5.1.8</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Neopixel 8mm THT Support PCB</title>
+        <company>Bernhard Bablok</company>
+        <rev>1.00</rev>
+        <date>2021-08-14</date>
+        <source>neopixel_8mm.sch</source>
+        <comment number="1" value="https://github.com/bablokb/christmas-tree"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J2">
+      <value>Conn_Next</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Conn_01x04_Male" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>610F7494</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>610F7E6D</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>300Ω</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17617</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>610F8438</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>NeoPixel_THT</value>
+      <footprint>LED_THT:LED_D5.0mm-4_RGB_Wide_Pins</footprint>
+      <datasheet>https://www.adafruit.com/product/1938</datasheet>
+      <libsource lib="LED" part="NeoPixel_THT" description="RGB LED with integrated controller, 5mm/8mm LED package"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>610F8A5E</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_First</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Conn_01x04_Male" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>610F6FAC</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="Conn_01x04_Male">
+      <description>Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04_Male</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="LED" part="NeoPixel_THT">
+      <description>RGB LED with integrated controller, 5mm/8mm LED package</description>
+      <docs>https://www.adafruit.com/product/1938</docs>
+      <footprints>
+        <fp>LED*D5.0mm*</fp>
+        <fp>LED*D8.0mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">NeoPixel_THT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DOUT" type="output"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="DIN" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/library/Connector.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/library/Device.lib</uri>
+    </library>
+    <library logical="LED">
+      <uri>/usr/share/kicad/library/LED.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="GND">
+      <node ref="C1" pin="2"/>
+      <node ref="J2" pin="2"/>
+      <node ref="D1" pin="2"/>
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="2" name="Net-(J1-Pad4)">
+      <node ref="R1" pin="2"/>
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="3" name="Net-(D1-Pad4)">
+      <node ref="R1" pin="1"/>
+      <node ref="D1" pin="4"/>
+      <node ref="J2" pin="4"/>
+    </net>
+    <net code="4" name="Net-(D1-Pad1)">
+      <node ref="D1" pin="1"/>
+      <node ref="J2" pin="1"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="5" name="VDD">
+      <node ref="J1" pin="3"/>
+      <node ref="J2" pin="3"/>
+      <node ref="D1" pin="3"/>
+      <node ref="C1" pin="1"/>
+    </net>
+  </nets>
+</export>
