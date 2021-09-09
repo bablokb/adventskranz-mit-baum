@@ -90,7 +90,7 @@ module cover(anschluss=false) {
   difference() {
     rotate([0,0,winkel]) rotate_extrude(angle=90-2*winkel) polygon(points);
     if (anschluss) {
-      rotate([0,0,25]) translate([kr_i+6,-10,k_b]) cube([30,20,30]);
+      rotate([0,0,90-25]) translate([kr_i+6,-10,k_b]) cube([30,20,30]);
     }
   }
 }
@@ -102,10 +102,10 @@ module cover(anschluss=false) {
 //  translate([10,40,0]) cube(90);
 //}
 
-intersection() {
-  cover(true);
-  translate([70,0,0]) cube(90);
-}
+//intersection() {
+//  cover(true);
+//  translate([70,0,0]) cube(90);
+//}
 
 // --- Test für Kabelkanalabdeckung   ----------------------------------------
 
@@ -115,4 +115,4 @@ intersection() {
 
 // rotate([0,0,45]) kranz();       // kompletter Kranz, gedreht wg. Druckbett
 // cover();                        // Abdeckung Kabelkanal ohne Ausschnitt
-// cover(true);                    // Abdeckung Kabelkanal mit  Ausschnitt
+   cover(true);                    // Abdeckung Kabelkanal mit  Ausschnitt
