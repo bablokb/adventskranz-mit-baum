@@ -6,7 +6,7 @@
 # Author: Bernhard Bablok
 # License: GPL3
 #
-# Website: https://github.com/bablokb/christmas-tree
+# Website: https://github.com/bablokb/adventskranz-mit-baum
 #
 # Note: color-wheel code from the neopixel-sample from Adafruit
 # --------------------------------------------------------------------------

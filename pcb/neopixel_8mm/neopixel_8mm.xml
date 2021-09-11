@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>/home/bablokb/git/christmas-tree/pcb/neopixel_8mm/neopixel_8mm.sch</source>
+    <source>/home/bablokb/git/adventskranz-mit-baum/pcb/neopixel_8mm/neopixel_8mm.sch</source>
     <date>Sa 14 Aug 2021 15:04:50 CEST</date>
     <tool>Eeschema 5.1.8-5.1.8</tool>
     <sheet number="1" name="/" tstamps="/">
@@ -11,7 +11,7 @@
         <rev>1.00</rev>
         <date>2021-08-14</date>
         <source>neopixel_8mm.sch</source>
-        <comment number="1" value="https://github.com/bablokb/christmas-tree"/>
+        <comment number="1" value="https://github.com/bablokb/adventskranz-mit-baum"/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
