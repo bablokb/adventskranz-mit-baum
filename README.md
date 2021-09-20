@@ -1,8 +1,6 @@
 Adventskranz mit Baumornament
 =============================
 
-***Achtung: die Inhalte sind aktuell nur rudimentär vorhanden***
-
 In diesem Projekt geht es um einen Adventskranz aus dem 3D-Drucker.
 Statt Kerzen kommen Baum-Ornamente zum Einsatz.
 
@@ -12,23 +10,35 @@ Statt Kerzen kommen Baum-Ornamente zum Einsatz.
 3D-Modelle
 ----------
 
-Das Modell des Baums (`3D/Ornament.stl`) ist von
+Das Modell des Baums (`3D/Ornament.stl.gz`) ist von
 <https://www.thingiverse.com/thing:2705104>. Mein Remix
-(`3D/Ornament-mit-Basis.stl`, in Zip-Datei) fügt einen
+(`3D/Ornament-mit-Basis.stl.gz`) fügt einen
 kleinen Stamm hinzu sowie ein Loch im Boden. Das dazugehörige
 OpenScad-Programm gibt es auch im Verzeichnis `3D`.
+N.B: beide STL-Dateien sind mit gzip komprimiert.
 
 Gedruckt ist das Ornament im Vasenmodus mit naturfarbenem PET. Die
-Druckdauer beträgt ca. 2 Stunden (0.2mm Schichtdicke).
+Druckdauer beträgt ca. 2 Stunden pro Ornament (0.2mm Schichtdicke).
 
 Der Kranz ist mit OpenScad entworfen und benötigt 6 Stunden Druckzeit.
+Zusätzlich gibt es noch Abdeckungen für die Kabelkanäle. Davon
+sind vier notwendig, eine Abdeckung hat einen passenden Ausschnitt
+für die Kabelzuführung.
+
+Die Toleranzen sind sehr gering, je nach Drucker und Material
+ist hier eine Anpassung notwendig. Dank OpenScad ist das auch
+ohne große Vorkenntnisse leicht möglich.
 
 
 Hardware-Setup
 --------------
 
 Das Projekt verwendet diffuse 8mm Neopixels von Adafruit, siehe
-<https://www.adafruit.com/product/1734>. 
+<https://www.adafruit.com/product/1734>. Ähnliche LEDs gibt es
+auch auf eBay. Die Ansteuerung ist i.a.R. gleich, das Pinout
+aber nicht.
+
+![](kranz-montiert.jpg)
 
 Jedes Pixel benötigt einen 100nF-Kondensator, das erste Pixel
 zusätzlich noch einen 300 Ohm Widerstand in der Datenleitung.
@@ -45,7 +55,11 @@ Platine
 
 Im Verzeichnis `pcb` gibt es die KiCAD-Quellen für eine passende
 Platine. Die Dimensionen der Platine sind exakt auf den Kranz
-abgestimmt.
+abgestimmt. Die Miniplatine enthält den Kondensator und den
+Widerstand, wobei das Layout so ist, dass die Platine mit oder
+ohne Widerstand verwendet werden kann.
+
+![](pcb/pcb-3d-bottom.png)
 
 
 Python-Quellen
