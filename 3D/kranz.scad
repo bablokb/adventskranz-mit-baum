@@ -89,6 +89,8 @@ module cover(anschluss=false) {
     ];
   difference() {
     rotate([0,0,winkel]) rotate_extrude(angle=90-2*winkel) polygon(points);
+    rotate([0,0,winkel]) translate([kr_i,-10,k_b]) cube([30,30,30]);
+    rotate([0,0,90-winkel]) translate([kr_i,-20,k_b]) cube([30,30,30]);
     if (anschluss) {
       rotate([0,0,90-25]) translate([kr_i+6,-10,k_b]) cube([30,20,30]);
     }
