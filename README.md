@@ -65,8 +65,15 @@ ohne Widerstand verwendet werden kann.
 Python-Quellen
 --------------
 
-Im Verzeichnis `src_python` gibt ein CircuitPython-Programm für
-die Steuerung.
+Das Verzeichnis `src_python` enthält ein CircuitPython-Programm für
+die Steuerung. Das Programm verwendet einen Taster für das Schalten
+der LEDs.
+
+Eine Alternativimplementation ist im Verzeichnis `src_python__sr04`.
+Hier kommt ein Distanz-Sensor (HC-SR04) statt des Tasters zum Einsatz.
+
+Die vom Projekt mitgelieferten Libs sind auf dem 7.x-Stand und mit
+Circuit-Python 7.0.0 für den Raspberry Pi Pico getestet.
 
 
 Attiny85-Quellen
