@@ -16,21 +16,24 @@ import board
 import digitalio
 import neopixel
 
-NEO = board.GP15
-BTN = board.GP20
+PIN_NEO = board.GP28
+NUM_NEO = 4
+ORD_NEO = neopixel.RGB
+PIN_BTN = board.GP16
 
-btn           = digitalio.DigitalInOut(BTN)
+# --- objects   -------------------------------------------------------------
+
+# list of neo-pixel-objects
+pixels = neopixel.NeoPixel(
+  PIN_NEO, NUM_NEO, brightness=0.2, auto_write=False, pixel_order=ORD_NEO)
+
+# button
+btn           = digitalio.DigitalInOut(PIN_BTN)
 btn.direction = digitalio.Direction.INPUT
 btn.pull      = digitalio.Pull.UP
 
-# The number of NeoPixels
-num_pixels = 4
-ORDER = neopixel.RGB
-pixels = neopixel.NeoPixel(
-  NEO, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER
-)
+# --- colorwheel   -----------------------------------------------------------
 
-# colorwheel
 def wheel(pos):
   # Input a value 0 to 255 to get a color value.
   # The colours are a transition r - g - b - back to r.
@@ -50,7 +53,7 @@ def wheel(pos):
     r = 0
     g = int(pos * 3)
     b = int(255 - pos * 3)
-  return (r, g, b) if ORDER in (neopixel.RGB, neopixel.GRB) else (r, g, b, 0)
+  return (r, g, b) if ORD_NEO in (neopixel.RGB, neopixel.GRB) else (r, g, b, 0)
 
 
 # --- main loop   -----------------------------------------------------------
@@ -66,7 +69,7 @@ while True:
   col_pos = (col_pos+1)%256
   color   = wheel(col_pos)
   # update pixels
-  for i in range(num_pixels):
+  for i in range(NUM_NEO):
     pixels[i] = color if i<counter else (0,0,0)
   pixels.show()
   # and wait
