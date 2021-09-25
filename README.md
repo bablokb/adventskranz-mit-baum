@@ -38,6 +38,7 @@ Das Projekt verwendet diffuse 8mm Neopixels von Adafruit, siehe
 auch auf eBay. Die Ansteuerung ist i.a.R. gleich, das Pinout
 aber nicht.
 
+![](kranz-verkabelung.jpg)
 ![](kranz-montiert.jpg)
 
 Jedes Pixel benötigt einen 100nF-Kondensator, das erste Pixel
