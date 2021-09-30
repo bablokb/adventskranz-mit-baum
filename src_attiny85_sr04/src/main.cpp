@@ -71,7 +71,6 @@ void loop() {
 
     // idle loop if state is off
     if (!global_state) {
-      delay(DELAY);
       continue;
     }
 
