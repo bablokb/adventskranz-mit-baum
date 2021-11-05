@@ -14,6 +14,7 @@
 // ---------------------------------------------------------------------------
 
 #include <Arduino.h>
+#include <EEPROM.h>
 #include <Adafruit_NeoPixel.h>
 #include <NewPing.h>
 
@@ -30,6 +31,7 @@ uint32_t wheel(byte pos);
 #define NUMPIXELS 4   // number of pixels
 #define BRIGHTNESS 50 // pin-brightness: 0-255 (not linear)
 #define DELAY 300     // delay in ms
+#define EEPROM_ADR 0  // eeprom address to use
 
 // --- objects   -------------------------------------------------------------
 
@@ -46,7 +48,8 @@ void setup() {
   pinMode(BTN_PIN, INPUT_PULLUP);
   pinMode(LED_PIN,OUTPUT);
   digitalWrite(LED_PIN,LOW);
-  counter = 0;
+  counter = EEPROM.read(EEPROM_ADR);
+  counter = counter > 4 ? 0 : counter;
   global_state = 0;
   sonar_state = 0;
   col_pos = 0;
@@ -63,6 +66,10 @@ void loop() {
 
     if (digitalRead(BTN_PIN) == LOW) {
       global_state = 1 - global_state;
+      if (!global_state) {
+        // turned off, save counter in eeprom
+        EEPROM.write(EEPROM_ADR,counter);
+      }
       digitalWrite(LED_PIN,global_state);
       delay(DELAY); // debounce
       continue;
