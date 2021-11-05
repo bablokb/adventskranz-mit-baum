@@ -29,7 +29,7 @@ uint32_t wheel(byte pos);
 #define ECHO_PIN 4    // SR05 echo pin
 #define NUMPIXELS 4   // number of pixels
 #define BRIGHTNESS 50 // pin-brightness: 0-255 (not linear)
-#define DELAY 100     // delay in ms
+#define DELAY 300     // delay in ms
 
 // --- objects   -------------------------------------------------------------
 
@@ -64,7 +64,7 @@ void loop() {
     if (digitalRead(BTN_PIN) == LOW) {
       global_state = 1 - global_state;
       digitalWrite(LED_PIN,global_state);
-      delay(2*DELAY); // debounce
+      delay(DELAY); // debounce
       continue;
     }
 
