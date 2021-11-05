@@ -37,8 +37,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, NEO_PIN,
                                             NEO_RGB + NEO_KHZ800);
 NewPing sonar(TRG_PIN, ECHO_PIN);
 
-int counter, global_state, sonar_state;
-byte col_pos;
+byte counter, global_state, sonar_state, col_pos;
 uint32_t color;
 
 // --- setup of objects   ----------------------------------------------------
@@ -92,7 +91,7 @@ void loop() {
 
 void update_pixel(void) {
   // update color
-  col_pos = (col_pos + 1) % 256;
+  col_pos = col_pos + 1;     // this is %256, since col_pos is a byte
   color = wheel(col_pos);
 
   // update pixels
