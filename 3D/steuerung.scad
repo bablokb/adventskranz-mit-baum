@@ -28,7 +28,7 @@ z_pcb = 15;
 x_85     = 18;       // attiny85 dimensions
 y_85     = 24.1;
 x_off_85 = 62.8;     // offset of attiny85
-y_off_85 = 10.4;
+y_off_85 = 10.3;
 
 x_sd     = 8;        // cutout for SD-connector
 x_off_sd = 5.3;      // offset relative to x_85
