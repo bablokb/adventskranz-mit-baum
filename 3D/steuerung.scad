@@ -25,7 +25,7 @@ x_pcb = 100;         // pcb dimensions
 y_pcb = 35;
 z_pcb = 15;
 
-x_85     = 18;       // attiny85 dimensions
+x_85     = 18.3;     // attiny85 dimensions
 y_85     = 24.1;
 x_off_85 = 62.8;     // offset of attiny85
 y_off_85 = 10.3;
