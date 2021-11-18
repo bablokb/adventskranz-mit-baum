@@ -32,7 +32,7 @@ y_off_85 = 10.3;
 
 x_sd     = 8;        // cutout for SD-connector
 x_off_sd = 5.3;      // offset relative to x_85
-z_off_sd = 5.0;      // offset relative to bottom of pcb
+z_off_sd = 4.0;      // offset relative to bottom of pcb
 
 x_pins     = 8.2;    // cutout for pins
 x_off_pins = 73.5;
