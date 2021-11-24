@@ -38,14 +38,16 @@ r = 3;               // edges 3mm rounding
 //b = 1.2;             // bottom-plate
 b = 0.8;             // bottom-plate
 
-r_sen = 6;           // sensor radius
+r_sen       = 8.0;   // sensor radius
+r_sen_d     = 0.5;   // extra space for sensor
 x_off_sen_1 = 1.9;   // x-offset from wall
-x_off_sen_2 = 27.6;  // x-offset from wall
+x_off_sen_2 = 27.8;  // x-offset from wall
 y_off_sen   = 7.5;   // y-offset from wall
 
-r_but     = 2;       // button radius
-x_off_but = 57.2;    // x-offset from wall
-y_off_but = 23.1;    // y-offset from wall
+r_but     = 3.5/2;   // button radius
+r_but_d   = 0.3;     // extra space for button
+x_off_but = 57.7;    // x-offset from wall
+y_off_but = 23.5;    // y-offset from wall
 
 
 // --- inner void   --------------------------------------------------------------
@@ -90,8 +92,11 @@ module outer() {
 
 difference() {
   outer();
-  translate([-d+w4+x_off_sen_1+r_sen,-d+r_sen+w4+y_off_sen,-fuzz]) cylinder(b+2*fuzz,r1=r_sen,r2=r_sen);
-  translate([-d+w4+x_off_sen_2+r_sen,-d+r_sen+w4+y_off_sen,-fuzz]) cylinder(b+2*fuzz,r1=r_sen,r2=r_sen);
-  translate([-d+w4+x_off_but+r_but,-d+r_but+w4+y_off_but,-fuzz]) cylinder(b+2*fuzz,r1=r_but,r2=r_but);
+  translate([x_off_sen_1+r_sen,r_sen+y_off_sen,-fuzz])
+                                      cylinder(b+2*fuzz,r1=r_sen+r_sen_d,r2=r_sen+r_sen_d);
+  translate([x_off_sen_2+r_sen,r_sen+y_off_sen,-fuzz])
+                                      cylinder(b+2*fuzz,r1=r_sen+r_sen_d,r2=r_sen+r_sen_d);
+  translate([x_off_but+r_but,r_but+y_off_but,-fuzz])
+                                      cylinder(b+2*fuzz,r1=r_but+r_but_d,r2=r_but+r_but_d);
 }
 inner();
