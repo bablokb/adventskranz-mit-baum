@@ -32,6 +32,7 @@ uint32_t wheel(byte pos);
 #define BRIGHTNESS 50 // pin-brightness: 0-255 (not linear)
 #define DELAY 300     // delay in ms
 #define EEPROM_ADR 0  // eeprom address to use
+#define DISTANCE 30   // distance in cm to check 
 
 // --- objects   -------------------------------------------------------------
 
@@ -80,15 +81,15 @@ void loop() {
       continue;
     }
 
-    // check "on"-event, i.e. distance < 100cm
-    if (!sonar_state && sonar.convert_cm(sonar.ping_median()) < 100) {
+    // check "on"-event, i.e. distance < DISTANCE
+    if (!sonar_state && sonar.convert_cm(sonar.ping_median()) < DISTANCE) {
       sonar_state = 1;
       counter = (counter + 1) % 5;  // event detected, update counter
       continue;
     }
 
-    // check "off"-event, i.e. distance > 100cm
-    if (sonar_state && sonar.convert_cm(sonar.ping_median()) > 100) {
+    // check "off"-event, i.e. distance > DISTANCE
+    if (sonar_state && sonar.convert_cm(sonar.ping_median()) > DISTANCE) {
       sonar_state = 0;
     }
   }
