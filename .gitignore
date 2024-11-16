@@ -19,6 +19,7 @@ fp-info-cache
 work
 TODO
 *.pyc
+boot_out.txt
 
 .pio
 .vscode/.browse.c_cpp.db*
