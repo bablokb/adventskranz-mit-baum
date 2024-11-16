@@ -66,14 +66,14 @@ ohne Widerstand verwendet werden kann.
 Python-Quellen
 --------------
 
-Das Verzeichnis `src\_python\_btn` enthält ein CircuitPython-Programm für
+Das Verzeichnis `src_python_btn` enthält ein CircuitPython-Programm für
 die Steuerung. Das Programm verwendet einen Taster für das Schalten
 der LEDs.
 
-Eine Alternativimplementation ist im Verzeichnis `src\_python\_sr04`.
+Eine Alternativimplementation ist im Verzeichnis `src_python_sr04`.
 Hier kommt ein Distanz-Sensor (HC-SR04) statt des Tasters zum Einsatz.
 
-Eine weitere Alternative ist im Verzeichnis `src\_python\_touch`
+Eine weitere Alternative ist im Verzeichnis `src_python_touch`
 vorhanden. Das Beispiel verwendet die direkte Touch-Unterstützung
 durch einen Pin des Mikrokontrollers.
 
