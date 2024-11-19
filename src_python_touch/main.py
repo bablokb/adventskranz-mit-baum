@@ -12,6 +12,7 @@
 
 import time
 import board
+import digitalio
 import touchio
 import neopixel
 
@@ -20,8 +21,8 @@ NUM_NEO = 4
 ORD_NEO = neopixel.RGB
 LVL_NEO = 0.4             # brightness
 INT_NEO = 1               # update interval for colors
-PIN_TCH = board.D1
-INT_TCH = 0.5             # touch delay interval (debounce)
+PIN_TCH = board.D4
+INT_TCH = 1               # touch delay interval (debounce)
 
 
 # --- objects   -------------------------------------------------------------
@@ -33,6 +34,10 @@ time.sleep(1)
 
 # touch
 touch = touchio.TouchIn(PIN_TCH)
+
+# led
+led = digitalio.DigitalInOut(board.LED)
+led.switch_to_output()
 
 # --- colorwheel   -----------------------------------------------------------
 
@@ -70,7 +75,9 @@ while True:
   if touch.value and time.monotonic() > last_touch + INT_TCH:
     last_touch = time.monotonic()
     counter = (counter+1)%(NUM_NEO+1)
-    #print(f"{counter=}")
+    led.value = 1
+    time.sleep(0.2)
+    led.value = 0
   if time.monotonic() > last_update + INT_NEO:
     # update color
     last_update = time.monotonic()
