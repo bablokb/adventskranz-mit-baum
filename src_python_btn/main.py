@@ -16,21 +16,30 @@ import board
 import digitalio
 import neopixel
 
-PIN_NEO = board.GP28
+# values for Pimoroni Plasma2040
+PIN_NEO = board.DATA
 NUM_NEO = 4
 ORD_NEO = neopixel.RGB
-PIN_BTN = board.GP16
+LVL_NEO = 0.4             # brightness
+INT_NEO = 1               # update interval for colors
+PIN_BTN = board.SW_A
+INT_BTN = 1               # button delay interval (debounce)
+LED_ON  = False           # active low LED
 
 # --- objects   -------------------------------------------------------------
 
 # list of neo-pixel-objects
 pixels = neopixel.NeoPixel(
-  PIN_NEO, NUM_NEO, brightness=0.2, auto_write=False, pixel_order=ORD_NEO)
+  PIN_NEO, NUM_NEO, brightness=LVL_NEO, auto_write=False, pixel_order=ORD_NEO)
+time.sleep(1)
 
 # button
 btn           = digitalio.DigitalInOut(PIN_BTN)
-btn.direction = digitalio.Direction.INPUT
-btn.pull      = digitalio.Pull.UP
+btn.switch_to_input(pull=digitalio.Pull.UP)
+
+# led
+led = digitalio.DigitalInOut(board.LED_R)
+led.switch_to_output(value = not LED_ON)
 
 # --- colorwheel   -----------------------------------------------------------
 
@@ -60,17 +69,24 @@ def wheel(pos):
 
 counter = 0
 col_pos = 0
+last_btn    = 0
+last_update = 0
+
 while True:
   # update counter
-  if not btn.value:
-    counter = (counter+1)%5
-    time.sleep(0.1)
-  # update color
-  col_pos = (col_pos+1)%256
-  color   = wheel(col_pos)
-  # update pixels
+  if not btn.value and time.monotonic() > last_btn + INT_BTN:
+    last_btn = time.monotonic()
+    counter = (counter+1)%(NUM_NEO+1)
+    led.value = LED_ON
+    time.sleep(0.2)
+    led.value = not LED_ON
+  if time.monotonic() > last_update + INT_NEO:
+    # update color
+    last_update = time.monotonic()
+    col_pos     = (col_pos+1)%256
+    color       = wheel(col_pos)
+    # update pixels
   for i in range(NUM_NEO):
     pixels[i] = color if i<counter else (0,0,0)
   pixels.show()
-  # and wait
   time.sleep(0.1)
