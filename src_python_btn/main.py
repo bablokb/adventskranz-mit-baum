@@ -15,15 +15,16 @@ import time
 import board
 import digitalio
 import neopixel
+import random
 
 # values for Pimoroni Plasma2040
 PIN_NEO = board.DATA
 NUM_NEO = 4
 ORD_NEO = neopixel.RGB
 LVL_NEO = 0.4             # brightness
-INT_NEO = 1               # update interval for colors
+INT_NEO = 5               # update interval for colors
 PIN_BTN = board.SW_A
-INT_BTN = 1               # button delay interval (debounce)
+INT_BTN = 0               # button delay interval (debounce)
 LED_ON  = False           # active low LED
 
 # --- objects   -------------------------------------------------------------
@@ -68,7 +69,7 @@ def wheel(pos):
 # --- main loop   -----------------------------------------------------------
 
 counter = 0
-col_pos = 0
+col_pos = random.randrange(256)
 last_btn    = 0
 last_update = 0
 
