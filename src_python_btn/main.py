@@ -16,6 +16,7 @@ import board
 import digitalio
 import neopixel
 import random
+import adafruit_fancyled.adafruit_fancyled as fancy
 
 # values for Pimoroni Plasma2040
 PIN_NEO = board.DATA
@@ -24,8 +25,11 @@ ORD_NEO = neopixel.RGB
 LVL_NEO = 0.4             # brightness
 INT_NEO = 5               # update interval for colors
 PIN_BTN = board.SW_A
+PIN_LVL = board.SW_B
 INT_BTN = 0               # button delay interval (debounce)
+LED     = board.LED_R     # board led
 LED_ON  = False           # active low LED
+
 
 # --- objects   -------------------------------------------------------------
 
@@ -37,9 +41,11 @@ time.sleep(1)
 # button
 btn           = digitalio.DigitalInOut(PIN_BTN)
 btn.switch_to_input(pull=digitalio.Pull.UP)
+lvl           = digitalio.DigitalInOut(PIN_LVL)
+lvl.switch_to_input(pull=digitalio.Pull.UP)
 
 # led
-led = digitalio.DigitalInOut(board.LED_R)
+led = digitalio.DigitalInOut(LED)
 led.switch_to_output(value = not LED_ON)
 
 # --- colorwheel   -----------------------------------------------------------
@@ -72,6 +78,7 @@ counter = 0
 col_pos = random.randrange(256)
 last_btn    = 0
 last_update = 0
+brightness  = LVL_NEO
 
 while True:
   # update counter
@@ -86,8 +93,11 @@ while True:
     last_update = time.monotonic()
     col_pos     = (col_pos+1)%256
     color       = wheel(col_pos)
-    # update pixels
+    color_adj = fancy.gamma_adjust(fancy.CRGB(*color),gamma_value=2.2,
+                                   brightness=brightness).pack()
+
+  # update pixels
   for i in range(NUM_NEO):
-    pixels[i] = color if i<counter else (0,0,0)
+    pixels[i] = color_adj if i<counter else (0,0,0)
   pixels.show()
   time.sleep(0.1)
