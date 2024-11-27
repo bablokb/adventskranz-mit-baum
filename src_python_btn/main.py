@@ -15,7 +15,6 @@ import time
 import board
 import digitalio
 import neopixel
-import random
 import adafruit_fancyled.adafruit_fancyled as fancy
 
 LEVELS = [round(0.1*i,1) for i in range(0,11)]
@@ -24,11 +23,11 @@ LEVELS = [round(0.1*i,1) for i in range(0,11)]
 PIN_NEO = board.DATA
 NUM_NEO = 4
 ORD_NEO = neopixel.RGB
-LVL_NEO = 4               # index into brightness-levels
+LVL_NEO = 7               # index into brightness-levels
 INT_NEO = 5               # update interval for colors
 PIN_BTN = board.SW_A
 PIN_LVL = board.SW_B
-INT_BTN = 0               # button delay interval (debounce)
+INT_BTN = 0.5             # button delay interval (debounce)
 LED     = board.LED_R     # board led
 LED_ON  = False           # active low LED
 
@@ -88,20 +87,19 @@ def wheel(pos):
 
 # --- main loop   -----------------------------------------------------------
 
-counter = 0
-
+counter     = 0
 brit_index  = LVL_NEO
-col_pos     = random.randrange(256)
-color       = wheel(col_pos)
-color_adj   = fancy.gamma_adjust(fancy.CRGB(*color),gamma_value=2.2,
-                                 brightness=LEVELS[brit_index]).pack()
+col_pos     = None
 last_btn    = 0
-last_update = 0
+last_update = -INT_NEO
 
 while True:
   # update counter on button press
   if not btn.value and time.monotonic() > last_btn + INT_BTN:
     last_btn = time.monotonic()
+    # pseudo-random initial color-value at very first button press
+    if col_pos is None:
+      col_pos = time.monotonic_ns() % 256
     counter = (counter+1)%(NUM_NEO+1)
     led.value = LED_ON
     time.sleep(0.2)
@@ -119,7 +117,7 @@ while True:
     led.value = not LED_ON
 
   # update color after INT_NEO seconds
-  if time.monotonic() > last_update + INT_NEO:
+  if counter and time.monotonic() > last_update + INT_NEO:
     # update color
     last_update = time.monotonic()
     col_pos     = (col_pos+1)%256
@@ -127,7 +125,10 @@ while True:
     color_adj = fancy.gamma_adjust(fancy.CRGB(*color),gamma_value=2.2,
                                    brightness=LEVELS[brit_index]).pack()
   # update pixels
-  for i in range(NUM_NEO):
-    pixels[i] = color_adj if i<counter else (0,0,0)
+  if counter:
+    for i in range(NUM_NEO):
+      pixels[i] = color_adj if i<counter else (0,0,0)
+  else:
+    pixels.fill(0)
   pixels.show()
   time.sleep(0.1)
